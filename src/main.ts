@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
 import { db } from './composables/services'
+import { installKeyboardDismiss } from './platform/keyboard'
 import './styles/main.css'
 
 async function boot() {
@@ -20,6 +21,7 @@ async function boot() {
     }
     return
   }
+  installKeyboardDismiss()
   createApp(App).use(router).mount('#app')
 }
 
