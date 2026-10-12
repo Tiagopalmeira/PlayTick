@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="100" viewBox="0 0 420 100"><g transform="translate(6 2) scale(0.92)">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="43" y="7" width="14" height="7" rx="2.5" fill="#F59E0B" stroke="none"/>
+    <rect x="47.5" y="13" width="5" height="9" fill="#F59E0B" stroke="none"/>
+    <rect x="74" y="20" width="7" height="11" rx="2" transform="rotate(45 77.5 25.5)" fill="#F59E0B" stroke="none"/>
+    <path d="M22.29 40 A32 32 0 1 1 39.06 86.07" stroke="#F59E0B" stroke-width="9"/>
+    <path d="M50 56 L62.9 40.7" stroke="#FFFFFF" stroke-width="7"/>
+    <circle cx="50" cy="56" r="6" fill="#F59E0B" stroke="none"/>
+    <path d="M4 50 H17" stroke="#FFFFFF" stroke-width="6.5"/>
+    <path d="M-2 62.5 H15" stroke="#FFFFFF" stroke-width="6.5"/>
+    <path d="M9 75 H25" stroke="#FFFFFF" stroke-width="6.5"/>
+  </g></g><text x="112" y="68" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600" font-size="52" letter-spacing="-0.5"><tspan fill="#FFFFFF">Parqui</tspan><tspan fill="#F59E0B">Time</tspan></text></svg>

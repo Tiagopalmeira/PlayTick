@@ -1,0 +1,117 @@
+@import '@fontsource/poppins/latin-400.css';
+@import '@fontsource/poppins/latin-500.css';
+@import '@fontsource/poppins/latin-600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Tokens semânticos em canais RGB (para suportar opacidade no Tailwind).
+ * Derivados da paleta oficial: Carvão, Verde Parque, Amarelo Alegria, Cinza Suave, Cinza Escuro, Branco, Vermelho.
+ */
+:root {
+  --page: 243 244 246;
+  --surface: 255 255 255;
+  --ink: 15 23 42; /* Carvão */
+  --muted: 75 85 99; /* 7,0:1 sobre branco */
+  --line: 229 231 235; /* Cinza Suave */
+  --run-bg: 230 246 245; /* tinta do Verde Parque */
+  --run-ink: 11 127 123; /* Verde Parque escurecido: 4,9:1 sobre branco */
+  --pause-bg: 254 243 220; /* tinta do Amarelo Alegria */
+  --done-bg: 252 236 236;
+  color-scheme: light;
+}
+
+.dark {
+  --page: 15 23 42; /* Carvão */
+  --surface: 31 41 55; /* Cinza Escuro */
+  --ink: 255 255 255;
+  --muted: 203 213 225;
+  --line: 55 65 81;
+  --run-bg: 13 52 60;
+  --run-ink: 94 219 212;
+  --pause-bg: 58 45 14;
+  --done-bg: 74 29 34;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-page font-sans text-base text-ink antialiased;
+    overscroll-behavior-y: contain;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold;
+  }
+  :focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  button,
+  [role='button'] {
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  /* Botões: altura mínima de 48px para toque com uma mão. */
+  .btn {
+    @apply inline-flex min-h-touch select-none items-center justify-center gap-2 rounded-control px-4 font-semibold
+      transition-[transform,background-color] duration-100 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50;
+  }
+  /* Verde Parque com texto Carvão: 6,6:1 (branco sobre o verde não passa no contraste). */
+  .btn-primary {
+    @apply btn bg-parque text-carvao hover:bg-[#12b5b0];
+  }
+  .btn-quiet {
+    @apply btn border border-line bg-surface text-ink hover:bg-line/40;
+  }
+  .btn-danger {
+    @apply btn bg-alerta-700 text-white hover:bg-alerta;
+  }
+  .btn-ghost {
+    @apply btn text-ink hover:bg-line/50;
+  }
+  .icon-btn {
+    @apply inline-flex min-h-touch min-w-touch items-center justify-center rounded-control transition-transform active:scale-95;
+  }
+
+  .field {
+    @apply block w-full rounded-control border border-line bg-surface px-3 py-3 text-base text-ink placeholder:text-muted/70
+      focus:border-parque focus:outline-none focus:ring-2 focus:ring-parque/40;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  /* Interruptor: usar logo após um <input type=checkbox class="peer sr-only">. */
+  .toggle {
+    @apply relative h-7 w-12 shrink-0 rounded-full bg-line transition-colors peer-checked:bg-parque peer-focus-visible:ring-2 peer-focus-visible:ring-alegria;
+  }
+  .toggle > span {
+    @apply absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0F172A" />
+    <meta name="description" content="ParquiTime — controle seu tempo. Aproveite a diversão." />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <title>ParquiTime</title>
+    <script>
+      // Aplica o tema antes da primeira pintura para evitar flash.
+      try {
+        var t = localStorage.getItem('parquitime:theme')
+        var dark = t === 'escuro' || (t !== 'claro' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        if (dark) document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>O ParquiTime precisa de JavaScript ativado para funcionar.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
