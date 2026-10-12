@@ -10,7 +10,7 @@ const items = [
 
 <template>
   <nav
-    class="fixed inset-x-0 bottom-0 z-30 bg-carvao text-white"
+    class="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-carvao text-white"
     style="padding-bottom: env(safe-area-inset-bottom)"
     aria-label="Navegação principal"
   >

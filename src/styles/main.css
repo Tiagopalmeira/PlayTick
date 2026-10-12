@@ -39,6 +39,8 @@
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
+    /* Âncoras e scrollIntoView não ficam escondidos atrás do cabeçalho fixo */
+    scroll-padding-top: calc(var(--header-h, 0px) + 12px);
     text-size-adjust: 100%;
   }
   body {

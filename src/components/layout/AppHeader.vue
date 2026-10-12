@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { Settings } from 'lucide-vue-next'
 import BrandLogo from '@/components/brand/BrandLogo.vue'
 import { useNow } from '@/composables/useTimerEngine'
@@ -12,10 +12,23 @@ const date = computed(() => {
   const s = formatLongDate(now.value)
   return s.charAt(0).toUpperCase() + s.slice(1)
 })
+
+// Expõe a altura do cabeçalho fixo para outros elementos "sticky" pararem logo abaixo dele.
+const el = ref<HTMLElement | null>(null)
+let observer: ResizeObserver | null = null
+onMounted(() => {
+  if (!el.value) return
+  observer = new ResizeObserver(([entry]) => {
+    const h = entry?.borderBoxSize?.[0]?.blockSize ?? el.value?.offsetHeight ?? 0
+    document.documentElement.style.setProperty('--header-h', `${Math.round(h)}px`)
+  })
+  observer.observe(el.value)
+})
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <header class="bg-carvao text-white" style="padding-top: env(safe-area-inset-top)">
+  <header ref="el" class="sticky top-0 z-30 border-b border-white/10 bg-carvao text-white" style="padding-top: env(safe-area-inset-top)">
     <div class="mx-auto flex max-w-2xl items-center justify-between px-4 pt-2">
       <RouterLink to="/" class="-ml-1 rounded-control p-1" aria-label="ParquiTime, ir para a operação">
         <BrandLogo />

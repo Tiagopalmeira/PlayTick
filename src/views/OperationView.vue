@@ -56,7 +56,7 @@ async function removeExamples() {
     <!-- Alerta fixo enquanto houver tempos esgotados -->
     <div
       v-if="counts.expired > 0"
-      class="sticky top-0 z-20 -mx-4 mt-3 flex items-center gap-3 bg-alerta-700 px-4 py-2 text-white"
+      class="sticky top-[var(--header-h,0px)] z-20 -mx-4 mt-3 flex items-center gap-3 bg-alerta-700 px-4 py-2 text-white"
       role="alert"
     >
       <p class="flex-1 text-sm font-semibold">
